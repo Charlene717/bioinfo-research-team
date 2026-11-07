@@ -1,0 +1,43 @@
+# data and large artefacts
+data/raw/
+data/processed/
+data/reference/
+results/objects/
+*.h5ad
+*.h5
+*.rds
+*.RData
+*.bam
+*.bai
+*.cram
+*.fastq*
+*.fq*
+*.vcf.gz
+*.bcf
+*.parquet
+*.feather
+
+# environments
+.snakemake/
+.nextflow*/
+work/
+renv/library/
+renv/staging/
+.Rproj.user/
+.Rhistory
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+*.egg-info/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+*.swp
+
+# secrets — never commit
+.env
+*.token
+*token*.txt
+*.pem
