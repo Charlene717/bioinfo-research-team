@@ -1,0 +1,8 @@
+{
+  "name": "bioinfo-research-team",
+  "version": "0.1.0",
+  "description": "生物資訊研究與論文發表團隊：10 位專職 AI 成員（文獻、研究設計、資料工程、分析、統計審核、圖表、寫作、審稿、可重現性、投稿策略）與 11 個工作流，從研究問題到可投稿論文，附品質門檻與原始資料保護。A bioinformatics research team of 10 specialist agents and 11 workflows that takes a question to a submission-ready paper with enforced quality gates.",
+  "author": { "name": "Chia-Jung Chang" },
+  "license": "MIT",
+  "keywords": ["bioinformatics", "research", "scRNA-seq", "genomics", "manuscript", "peer-review", "reproducibility", "biostatistics"]
+}
