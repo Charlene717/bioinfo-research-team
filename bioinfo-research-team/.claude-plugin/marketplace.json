@@ -6,7 +6,7 @@
     {
       "name": "bioinfo-research-team",
       "source": "./",
-      "description": "Bioinformatics research & publication team: 10 specialist agents, 11 workflows, quality gates, raw-data guard.",
+      "description": "Bioinformatics research & publication team: 11 specialist agents, 12 workflows, quality gates, raw-data guard.",
       "category": "research",
       "tags": ["bioinformatics", "research", "manuscript"]
     }
