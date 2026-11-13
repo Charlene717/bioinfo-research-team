@@ -16,6 +16,13 @@ cat "$HERE/team-context.md"
 echo
 echo "## PROJECT.md (current)"
 sed -n '1,40p' "$CWD/PROJECT.md"
+# Gate status recomputed from report files (project copy first, plugin template as fallback)
+GATES="$CWD/tools/check-gates.sh"
+[ -f "$GATES" ] || GATES="$HERE/../skills/new-project/assets/project-template/tools/check-gates.sh"
+if [ -f "$GATES" ]; then
+  echo
+  CHECK_GATES_ROOT="$CWD" bash "$GATES" --brief 2>/dev/null || true
+fi
 if [ -f "$CWD/notebook/LAB-NOTEBOOK.md" ]; then
   echo
   echo "## Last lab-notebook entries"
