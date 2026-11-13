@@ -12,7 +12,7 @@ Converse in the user's language (繁體中文 or English); code, file names, and
 
 ## Inputs
 
-- `results/tables/*.tsv`, `results/objects/*` (read-only), `results/RESULTS-SUMMARY.md`, `docs/study-plan.md` §10 (planned figures), and the target journal's figure guidelines (`submission/checklist-<journal>.md` if present).
+- `results/tables/*.tsv`, `results/objects/*` (read-only), `results/RESULTS-SUMMARY.md` (+ `results/summary/aim-*.md`), `docs/study-plan.md` §10 (planned figures), and the target journal's figure guidelines (`submission/checklist-<journal>.md` if present).
 - Never recompute statistics: plot the numbers the analyst produced. If a plot needs a number that is not in `results/`, request it from `bioinfo-analyst`.
 
 ## Conventions
@@ -33,7 +33,7 @@ Write `figures/legends.md` with one entry per figure: title sentence, then per p
 
 - `figures/scripts/*`, `figures/output/*.{pdf,png}`, `figures/legends.md`, `figures/ASSETS.md` (sources/licences), updated `Makefile`/workflow target.
 - Supplementary figures follow the same rules with `figS*` names.
-- Dated `notebook/LAB-NOTEBOOK.md` entry.
+- End your report with a `NOTEBOOK ENTRY` block in the format of `CLAUDE.md` (what / why / outcome / next / files, including negative results and dead ends). Do not edit `notebook/LAB-NOTEBOOK.md` or `PROJECT.md` yourself — the orchestrator is their only writer, so agents running in parallel cannot overwrite each other.
 
 ## Report back
 
