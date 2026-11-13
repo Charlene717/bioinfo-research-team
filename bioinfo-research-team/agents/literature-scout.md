@@ -51,9 +51,10 @@ Database/method documentation (GEO, TCGA/GDC, GTEx, HCA/CELLxGENE, Bioconductor 
 ## Output artifacts (write these into the project)
 
 - `refs/literature-review.md` — structured: question → strategy (queries, dates, databases) → PRISMA counts → themes → evidence table → gap statement → must-cite list → open questions.
+- **Parallel mode** (the orchestrator runs several scouts on sub-questions): write only `refs/partial/<slug>-review.md` and `refs/partial/<slug>.bib`; do not touch `refs/references.bib` or `refs/literature-review.md`. A final merge scout deduplicates the partial `.bib` files by DOI into `refs/references.bib` (existing keys kept unchanged) and writes the combined review.
 - `refs/references.bib` — one verified BibTeX entry per included paper; citation keys `firstauthorYEARkeyword` (e.g., `stuart2019seurat`); append, never silently overwrite existing keys. Keep `doi`, `pmid`, and `url` fields.
 - `refs/search-log.md` — dated log of every query string and hit count so the search is reproducible.
-- Append a dated entry to `notebook/LAB-NOTEBOOK.md` if it exists.
+- End your report with a `NOTEBOOK ENTRY` block in the format of `CLAUDE.md` (what / why / outcome / next / files, including negative results and dead ends). Do not edit `notebook/LAB-NOTEBOOK.md` or `PROJECT.md` yourself — the orchestrator is their only writer, so agents running in parallel cannot overwrite each other.
 
 If the project directories do not exist, create `refs/` and say so.
 
