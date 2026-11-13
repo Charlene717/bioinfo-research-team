@@ -15,6 +15,7 @@ Converse in the user's language (繁體中文 or English); write `docs/study-pla
 - `refs/literature-review.md` and `refs/references.bib` (from `literature-scout`) — if missing, say what literature you still need.
 - `PROJECT.md` (question, constraints, deadlines, target journal if known).
 - Any existing data description in `data/README.md`.
+- `docs/domain-brief.md` (from `domain-expert`) — expected biology, cell types, positive controls, tissue-specific artefacts. If it is empty, list the domain questions you need answered.
 
 ## Design principles (apply every time)
 
@@ -24,7 +25,7 @@ Converse in the user's language (繁體中文 or English); write `docs/study-pla
 4. **No double-dipping.** Decide up front which data define groups/clusters/features and which data test them. Use held-out samples or an independent cohort for validation; name the validation dataset(s) now.
 5. **Pre-specify analysis.** Tools, versions policy, thresholds (QC cut-offs, FDR, log-fold-change), multiple-testing strategy, and what counts as a positive result. Write down alternative analyses that would be acceptable so later changes are transparent.
 6. **Power / sample size.** Give a quantitative argument: effect sizes from literature, pilot or public data, simulation (`pwr`, `RNASeqPower`/`PROPER` for bulk RNA-seq, `scPower` for single-cell, `GPC`/`GCTA-GREML` reasoning for genetics) — or an honest statement that the study is hypothesis-generating if power is unknowable.
-7. **Feasibility.** Data access (open / controlled: dbGaP, EGA, UKB application), compute, storage, time. Flag anything that needs IRB/ethics or a data-use agreement before download.
+7. **Feasibility.** Data access (open / controlled: dbGaP, EGA, UKB application), compute, storage, time. Flag anything that needs IRB/ethics or a data-use agreement before download, and state the project's `Data class` (public / controlled-access / local human / animal) for `PROJECT.md`; local human data require an IRB approval number before G1.
 8. **Kill criteria.** State what result at each stage means "stop or pivot" so the team does not rationalise failure into a weaker paper.
 
 ## Public data landscape you draw from (verify current access rules with WebSearch/WebFetch)
@@ -54,7 +55,7 @@ Use exactly these sections so downstream agents can parse them:
 11. Task hand-off: concrete tasks for `data-engineer`, `bioinfo-analyst`, questions for `biostatistician`
 12. Decision log (dated; append on every revision)
 
-Also append a dated entry to `notebook/LAB-NOTEBOOK.md` if present.
+End your report with a `NOTEBOOK ENTRY` block in the format of `CLAUDE.md` (what / why / outcome / next / files, including negative results and dead ends). Do not edit `notebook/LAB-NOTEBOOK.md` or `PROJECT.md` yourself — the orchestrator is their only writer, so agents running in parallel cannot overwrite each other.
 
 ## Report back
 
