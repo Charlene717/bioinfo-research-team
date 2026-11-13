@@ -20,7 +20,7 @@ while [ $# -gt 0 ]; do
   esac
 done
 [ -n "$MODE" ] || { echo "choose --user or --project <dir>" >&2; exit 1; }
-AGENTS=(literature-scout study-designer data-engineer bioinfo-analyst biostatistician figure-designer manuscript-writer peer-reviewer reproducibility-engineer submission-strategist)
+AGENTS=(literature-scout study-designer domain-expert data-engineer bioinfo-analyst biostatistician figure-designer manuscript-writer peer-reviewer reproducibility-engineer submission-strategist)
 SKILLS=(team new-project lit-review plan-study analyze make-figures draft-paper review-paper repro-check submit respond-reviewers paper-pipeline)
 HOOKDIR="$TARGET/hooks/bioinfo-research-team"
 SETTINGS="$TARGET/settings.json"
@@ -28,17 +28,35 @@ SETTINGS="$TARGET/settings.json"
 if [ "$UNINSTALL" = 1 ]; then
   for a in "${AGENTS[@]}"; do rm -f "$TARGET/agents/$a.md"; done
   for s in "${SKILLS[@]}"; do rm -rf "$TARGET/skills/$s"; done
-  rm -rf "$HOOKDIR"
+  rm -rf "$HOOKDIR" "$TARGET/hooks/skills/new-project"
+  if [ -f "$SETTINGS" ] && command -v python3 >/dev/null 2>&1; then
+    cp "$SETTINGS" "$SETTINGS.bak.$(date +%Y%m%d%H%M%S)"
+    python3 - "$SETTINGS" <<'PY'
+import json, sys
+p = sys.argv[1]
+s = json.load(open(p))
+for ev, lst in list(s.get("hooks", {}).items()):
+    s["hooks"][ev] = [e for e in lst if "bioinfo-research-team" not in json.dumps(e)]
+    if not s["hooks"][ev]:
+        del s["hooks"][ev]
+if not s.get("hooks"):
+    s.pop("hooks", None)
+json.dump(s, open(p, "w"), indent=2, ensure_ascii=False)
+print(f"hook entries removed from {p} (backup kept)")
+PY
+  fi
   echo "Removed agents, skills and hook scripts from $TARGET."
-  echo "Hooks entries in $SETTINGS were left in place; remove the two entries whose command contains 'bioinfo-research-team' if you no longer want them."
   exit 0
 fi
 
 mkdir -p "$TARGET/agents" "$TARGET/skills" "$HOOKDIR"
 for a in "${AGENTS[@]}"; do cp "$HERE/agents/$a.md" "$TARGET/agents/"; done
 for s in "${SKILLS[@]}"; do rm -rf "$TARGET/skills/$s"; cp -R "$HERE/skills/$s" "$TARGET/skills/"; done
-cp "$HERE/hooks/protect-raw-data.sh" "$HERE/hooks/session-context.sh" "$HERE/hooks/team-context.md" "$HOOKDIR/"
-chmod +x "$HOOKDIR"/*.sh
+cp "$HERE/hooks/protect-raw-data.sh" "$HERE/hooks/protect_raw_data.py" "$HERE/hooks/session-context.sh" "$HERE/hooks/team-context.md" "$HOOKDIR/"
+# session-context.sh falls back to the template's check-gates.sh via ../skills relative to the hook dir
+mkdir -p "$TARGET/hooks/skills/new-project/assets/project-template/tools"
+cp "$HERE/skills/new-project/assets/project-template/tools/check-gates.sh" "$TARGET/hooks/skills/new-project/assets/project-template/tools/"
+chmod +x "$HOOKDIR"/*.sh "$HOOKDIR"/*.py
 
 # merge hooks into settings.json (python for a safe JSON merge; backup first)
 if command -v python3 >/dev/null 2>&1; then
