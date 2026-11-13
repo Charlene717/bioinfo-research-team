@@ -44,3 +44,5 @@ Classify each comment (must-do / should-do / can-rebut), estimate effort, assign
 ## Report back
 
 Recommended journal and runner-up with one-line rationale each; APC and OA implications; hard format constraints that affect the manuscript now (word limits, figure count); the paperwork the PI must supply (IRB numbers, grants, ORCIDs, COI); the preprint decision to make.
+
+End your report with a `NOTEBOOK ENTRY` block in the format of `CLAUDE.md` (what / why / outcome / next / files, including negative results and dead ends). Do not edit `notebook/LAB-NOTEBOOK.md` or `PROJECT.md` yourself — the orchestrator is their only writer, so agents running in parallel cannot overwrite each other.
