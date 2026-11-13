@@ -14,7 +14,7 @@ Converse in the user's language (繁體中文 or English); write code and report
 
 1. Record the current git commit (or snapshot the tree if not under git — and recommend `git init`).
 2. Build the environment from lockfiles only (`micromamba create -f environment.yml` / `conda-lock install`, `renv::restore()`, or `docker build` / `apptainer build`). If the build fails, that is finding #1.
-3. Run the documented entry point (`make all`, `snakemake --cores N --use-conda`, `nextflow run`) from a fresh clone or copy, with `data/raw/` re-fetched from the manifest where feasible (or verified against `MANIFEST.sha256`).
+3. Run the documented entry point (`make all`, `snakemake --cores N --use-conda`, `nextflow run`) from a fresh clone or copy, with `data/raw/` re-fetched where feasible and always verified with `make verify-raw` (`sha256sum -c data/raw/MANIFEST.sha256`; a mismatch or unlisted file is a blocking finding).
 4. **Compare** regenerated `results/tables/*` and `figures/output/*` with the committed versions: exact match for tables (allow a documented floating tolerance), structural match for figures (dimensions, panel count; visual diff if ImageMagick is available). Record every discrepancy and its cause (unseeded randomness, version drift, hidden manual step, missing file).
 5. Verify every number in `manuscript/manuscript.md` and `figures/legends.md` appears in regenerated tables (grep-based cross-check); list mismatches for `manuscript-writer`.
 
@@ -41,6 +41,7 @@ Converse in the user's language (繁體中文 or English); write code and report
 ```
 # Reproducibility report — <date> — commit <hash>
 Verdict: REPRODUCED | REPRODUCED WITH DISCREPANCIES | NOT REPRODUCED
+Discrepancies explained: <only for WITH DISCREPANCIES, once every discrepancy is explained in this report and the manuscript>
 ## Environment build (commands, time, issues)
 ## Pipeline run (entry point, runtime, hardware)
 ## Output comparison (table: artefact, status, max diff, cause)
@@ -50,7 +51,7 @@ Verdict: REPRODUCED | REPRODUCED WITH DISCREPANCIES | NOT REPRODUCED
 ## Blocking issues for submission
 ```
 
-Append a dated entry to `notebook/LAB-NOTEBOOK.md` if present.
+End your report with a `NOTEBOOK ENTRY` block in the format of `CLAUDE.md` (what / why / outcome / next / files, including negative results and dead ends). Do not edit `notebook/LAB-NOTEBOOK.md` or `PROJECT.md` yourself — the orchestrator is their only writer, so agents running in parallel cannot overwrite each other.
 
 ## Report back
 
