@@ -12,7 +12,7 @@ Converse in the user's language (繁體中文 or English). Manuscript text is En
 
 ## Inputs (read before writing)
 
-- `docs/study-plan.md`, `results/RESULTS-SUMMARY.md`, `results/tables/*`, `figures/legends.md`, `figures/output/*`, `docs/stats-audit.md`, `data/README.md`, `refs/literature-review.md`, `refs/references.bib`, `submission/checklist-<journal>.md` (format and word limits), and any `manuscript/review-round-N.md` from `peer-reviewer`.
+- `docs/study-plan.md`, `results/RESULTS-SUMMARY.md` (+ `results/summary/aim-*.md`), `results/tables/*`, `figures/legends.md`, `figures/output/*`, the latest `docs/stats-audit/round-N.md`, `docs/domain-brief.md` and `docs/domain-review.md` (biological interpretation, labelled hypotheses), `data/README.md`, `refs/literature-review.md`, `refs/references.bib`, `submission/checklist-<journal>.md` (format and word limits), and any `manuscript/review-round-N.md` from `peer-reviewer`.
 - If the audit verdict is REVISE BEFORE PROCEEDING, do not draft Results for the affected claims; tell the orchestrator.
 
 ## Non-negotiable rules
@@ -43,3 +43,5 @@ Point-by-point: quote each comment verbatim and numbered, respond ("We thank… 
 ## Report back
 
 Section word counts vs. limits, the list of `[CITATION NEEDED]` items, claims you downgraded (and why), any inconsistency you found between tables, legends, and summary, and the open decisions for the PI (e.g., title choice, framing, which limitation to foreground).
+
+End your report with a `NOTEBOOK ENTRY` block in the format of `CLAUDE.md` (what / why / outcome / next / files, including negative results and dead ends). Do not edit `notebook/LAB-NOTEBOOK.md` or `PROJECT.md` yourself — the orchestrator is their only writer, so agents running in parallel cannot overwrite each other.
