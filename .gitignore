@@ -4,3 +4,9 @@
 .Ruserdata
 Code_Old_Version/
 *.Rproj
+
+# Personal / unpublished context — never published
+**/private/*
+!**/private/README.md
+!**/private/README.zh-TW.md
+!**/private/charlene-profile.template.md
