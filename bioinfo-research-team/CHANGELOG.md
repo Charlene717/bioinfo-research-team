@@ -1,5 +1,36 @@
 # Changelog
 
+**English** | [繁體中文](CHANGELOG.zh-TW.md)
+
+## 0.3.1 — 2026-11-15
+
+### Changed
+- **Bilingual documentation.** Every introduction page defaults to English and has a Traditional Chinese version (`*.zh-TW.md`), with an `English | 繁體中文` switch at the top. This covers the repository front page, the plugin README, this changelog, `private/README`, and the README of every new project created by `/new-project`.
+- **Marketplace manifest moved to the repository root** (`.claude-plugin/marketplace.json`, `source: ./bioinfo-research-team`), so `/plugin marketplace add Charlene717/bioinfo-research-team` works.
+- The root `.gitignore` also excludes `**/private/*` (except the READMEs and the template), so the private profile cannot be committed from the repository root.
+- Removed a stale nested copy of the v0.1 skills (`bioinfo-research-team/bioinfo-research-team/skills/`).
+- README fixes: `/paper-pipeline` added to the command table, the gate table is separated from the following paragraph, and the install commands use the real repository name.
+
+## 0.3.0 — 2026-11-13
+
+### Added
+- **New agent `charlene-analyst` (lead analyst).** It works from Charlene's own analysis experience and is the default analyst for scRNA-seq / snRNA-seq, bulk RNA-seq, deconvolution, methylation + RNA, and multi-omics integration. It covers:
+  - number–reason–record and a decision log;
+  - ambient correction, then two doublet methods, per capture lane;
+  - pseudobulk with a minimum cell count per sample, and decomposition into proportion shift vs within-population change;
+  - transparent handling of literature-driven candidate genes, and comparison of new subtypes with existing nomenclature;
+  - checks for dissociation-stress artefacts;
+  - parallel sensitivity scenarios, including purity scenarios and suspect samples;
+  - a run that follows the proposal exactly;
+  - a hypothesis ledger (supports / contradicts / why / what discriminates);
+  - memory-aware planning, backups before edits, and new versions that never overwrite.
+- **`docs/analysis-conventions.md`** in the project template. `charlene-analyst` owns it and every analyst follows it.
+- **`private/`**: local-only context, git-ignored. `charlene-profile.md` holds ongoing projects, collaborators' preferences, unpublished results, local paths and computing resources. `install.sh` copies it to `~/.claude/bioinfo-research-team/private/`, and the agent reads it at the start of each task and never copies it into project files or web searches.
+
+### Changed
+- `bioinfo-analyst` is now the supporting analyst for other data types (variants/GWAS, spatial-first, survival-only, ML-only) and follows `docs/analysis-conventions.md`.
+- `/team` has an analyst-routing rule. `/analyze`, `/respond-reviewers`, `/draft-paper`, `/repro-check` and `/paper-pipeline` now brief "the aim's analyst".
+
 ## 0.2.0 — 2026-11-12
 
 ### Fixed
@@ -28,7 +59,7 @@
   - The statistician diffs the plan and config against the tag in every results audit; an undocumented change to the primary analysis is a Critical finding.
 - **Machine-readable gate lines**: `Changes confirmed:`, `Minor points addressed:` and `Discrepancies explained:`. For G5, a decision-log row `G5 final files approved`.
 - **Two-pass (blind-first) protocol** for `biostatistician` and `peer-reviewer`. They read the tables and code first, then the narrative, and report any place where the narrative goes beyond the evidence.
-- **New agent `domain-expert`** (領域生物學專家).
+- **New agent `domain-expert`** (domain biologist).
   - Writes `docs/domain-brief.md`: expected cell types, markers, positive controls and tissue artefacts.
   - Reviews the plan, the annotation and results, and the Discussion, in `docs/domain-review.md`.
   - Wired into `/plan-study`, `/analyze`, `/draft-paper`, `/respond-reviewers`, `/review-paper` and `/paper-pipeline`.
