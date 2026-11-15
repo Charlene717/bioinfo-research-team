@@ -20,7 +20,7 @@ while [ $# -gt 0 ]; do
   esac
 done
 [ -n "$MODE" ] || { echo "choose --user or --project <dir>" >&2; exit 1; }
-AGENTS=(literature-scout study-designer domain-expert data-engineer bioinfo-analyst biostatistician figure-designer manuscript-writer peer-reviewer reproducibility-engineer submission-strategist)
+AGENTS=(literature-scout study-designer domain-expert data-engineer charlene-analyst bioinfo-analyst biostatistician figure-designer manuscript-writer peer-reviewer reproducibility-engineer submission-strategist)
 SKILLS=(team new-project lit-review plan-study analyze make-figures draft-paper review-paper repro-check submit respond-reviewers paper-pipeline)
 HOOKDIR="$TARGET/hooks/bioinfo-research-team"
 SETTINGS="$TARGET/settings.json"
@@ -84,6 +84,17 @@ print(f"hooks merged into {settings_path}")
 PY
 else
   echo "python3 not found: hooks not merged. Add the entries from $HERE/hooks/hooks.json to $SETTINGS manually (replace \${CLAUDE_PLUGIN_ROOT}/hooks with $HOOKDIR)."
+fi
+
+# private profile for charlene-analyst (local only; never committed)
+if [ -f "$HERE/private/charlene-profile.md" ]; then
+  PRIV="$HOME/.claude/bioinfo-research-team/private"
+  mkdir -p "$PRIV"
+  if [ -f "$PRIV/charlene-profile.md" ] && ! cmp -s "$HERE/private/charlene-profile.md" "$PRIV/charlene-profile.md"; then
+    cp "$PRIV/charlene-profile.md" "$PRIV/charlene-profile.md.bak.$(date +%Y%m%d%H%M%S)"
+  fi
+  cp "$HERE/private/charlene-profile.md" "$PRIV/"
+  echo "Private profile copied to $PRIV/ (previous version backed up if it differed)."
 fi
 
 echo "Installed ${#AGENTS[@]} agents and ${#SKILLS[@]} skills into $TARGET. Restart Claude Code; type /team to begin."
