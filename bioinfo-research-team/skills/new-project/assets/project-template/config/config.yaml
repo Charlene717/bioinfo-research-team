@@ -1,0 +1,24 @@
+# Single source of parameters. Analysis scripts read from here; never hard-code thresholds in scripts.
+project: {{PROJECT_NAME}}
+seed: 20240101
+threads: 4
+
+reference:
+  genome: ""        # e.g., GRCh38
+  annotation: ""    # e.g., GENCODE v47 (record URL + checksum in data/README.md)
+
+qc:
+  min_counts_per_cell: null   # null = data-driven (MAD) threshold decided with biostatistician
+  max_mito_fraction: null
+  doublet_method: scDblFinder
+
+de:
+  method: pseudobulk-edgeR     # sample-level inference for condition comparisons
+  fdr: 0.05
+  min_abs_log2fc: 0.0
+  covariates: []               # e.g., [sex, age, batch]
+
+enrichment:
+  geneset_source: MSigDB
+  geneset_version: ""
+  background: tested_genes

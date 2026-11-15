@@ -1,0 +1,41 @@
+# Minimal reproducible environment. Pin exact versions once the analysis is fixed
+# (e.g., with `conda-lock -f environment.yml`) and record them in docs/.
+name: {{PROJECT_NAME}}
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python>=3.11
+  - r-base>=4.4
+  - snakemake-minimal
+  - pandoc
+  - jq
+  # Python stack
+  - numpy
+  - pandas
+  - scipy
+  - scanpy
+  - anndata
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  # R stack (CRAN via conda-forge, Bioconductor via bioconda)
+  - r-tidyverse
+  - r-data.table
+  - r-here
+  - r-renv
+  - r-ggplot2
+  - r-patchwork
+  - r-seurat
+  - bioconductor-deseq2
+  - bioconductor-edger
+  - bioconductor-limma
+  - bioconductor-fgsea
+  - bioconductor-clusterprofiler
+  - bioconductor-singlecellexperiment
+  - bioconductor-scdblfinder
+  # QC / utilities
+  - fastqc
+  - multiqc
+  - salmon
+  - sra-tools

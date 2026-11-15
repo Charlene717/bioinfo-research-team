@@ -1,0 +1,54 @@
+# data and large artefacts
+# Ignore data contents but keep the small provenance files that make the data verifiable.
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/MANIFEST*
+!data/raw/README*
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/sample_sheet.tsv
+!data/processed/metadata-mapping.md
+data/reference/*
+!data/reference/.gitkeep
+!data/reference/MANIFEST*
+!data/reference/README*
+results/objects/*
+!results/objects/.gitkeep
+*.h5ad
+*.h5
+*.rds
+*.RData
+*.bam
+*.bai
+*.cram
+*.fastq*
+*.fq*
+*.vcf.gz
+*.bcf
+*.parquet
+*.feather
+
+# environments
+.snakemake/
+.nextflow*/
+work/
+renv/library/
+renv/staging/
+.Rproj.user/
+.Rhistory
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+*.egg-info/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+*.swp
+
+# secrets — never commit
+.env
+*.token
+*token*.txt
+*.pem
