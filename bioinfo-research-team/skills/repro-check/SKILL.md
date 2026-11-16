@@ -11,7 +11,7 @@ Follow the orchestration rules in `/team`. Precondition: `make gates` shows G3 P
 ## Steps
 
 1. Brief **`reproducibility-engineer`**: mode (`--full` rebuilds the environment and re-runs everything; `--quick` re-runs `make analysis figures` in the existing environment and cross-checks numbers), licence preference, repositories for deposition, and outputs (`docs/reproducibility-report.md`, hardened repo files, `submission/deposition/`, availability statements).
-2. If the verdict is NOT REPRODUCED or discrepancies touch a reported number: brief **`bioinfo-analyst`** to fix the cause (seed, version, hidden step), then re-run the quick check; if a number changes, route it to `manuscript-writer` (text/legends) and `biostatistician` (does the conclusion hold?).
+2. If the verdict is NOT REPRODUCED or discrepancies touch a reported number: brief the aim's analyst (`charlene-analyst` or `bioinfo-analyst`) to fix the cause (seed, version, hidden step), then re-run the quick check; if a number changes, route it to `manuscript-writer` (text/legends) and `biostatistician` (does the conclusion hold?).
 3. Have `manuscript-writer` paste the final Data and Code Availability statements into the manuscript.
 4. **G4 passes** when `make gates` shows G4 PASS: REPRODUCED, or REPRODUCED WITH DISCREPANCIES with every discrepancy explained in the report and manuscript and the `Discrepancies explained:` line filled in. Update `PROJECT.md` (phase 8 → 9, G4 ☑), append notebook entries, commit; recommend `/submit`.
 5. Do not create public releases, Zenodo records, or repository deposits yourself; prepare them and give the PI the exact steps.
