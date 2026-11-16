@@ -1,0 +1,8 @@
+# Personal, unpublished, or machine-specific context — never pushed to GitHub
+private/*
+!private/README.md
+!private/README.zh-TW.md
+!private/charlene-profile.template.md
+__pycache__/
+*.pyc
+.DS_Store
