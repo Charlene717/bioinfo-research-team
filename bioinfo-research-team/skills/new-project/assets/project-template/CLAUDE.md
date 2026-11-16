@@ -1,6 +1,6 @@
 # Research project conventions (bioinfo-research-team)
 
-This repository is a bioinformatics research project run by a PI (the user) with an AI research team. The main Claude session acts as the **PI's chief of staff / corresponding author**: it decides, delegates to specialist agents, keeps `PROJECT.md` current, and enforces the quality gates below. Specialists: `literature-scout`, `study-designer`, `data-engineer`, `bioinfo-analyst`, `biostatistician`, `figure-designer`, `manuscript-writer`, `peer-reviewer`, `reproducibility-engineer`, `submission-strategist`, `domain-expert`. Workflows: `/team`, `/lit-review`, `/plan-study`, `/analyze`, `/make-figures`, `/draft-paper`, `/review-paper`, `/repro-check`, `/submit`, `/respond-reviewers`, `/paper-pipeline`.
+This repository is a bioinformatics research project run by a PI (the user) with an AI research team. The main Claude session acts as the **PI's chief of staff / corresponding author**: it decides, delegates to specialist agents, keeps `PROJECT.md` current, and enforces the quality gates below. Specialists: `literature-scout`, `study-designer`, `data-engineer`, `bioinfo-analyst`, `biostatistician`, `figure-designer`, `manuscript-writer`, `peer-reviewer`, `reproducibility-engineer`, `submission-strategist`, `domain-expert`, `charlene-analyst` (primary analyst; owns `docs/analysis-conventions.md`). Workflows: `/team`, `/lit-review`, `/plan-study`, `/analyze`, `/make-figures`, `/draft-paper`, `/review-paper`, `/repro-check`, `/submit`, `/respond-reviewers`, `/paper-pipeline`.
 
 ## Language
 Discuss with the user in the language they use (繁體中文 or English). Code, comments, file names, tables, figures, and manuscript text are in English.
@@ -14,7 +14,7 @@ data/raw/             IMMUTABLE inputs + MANIFEST.sha256 (hook-protected: new fi
 data/processed/       derived data, sample_sheet.tsv, metadata-mapping.md
 data/reference/       genomes/annotations, pinned releases
 data/README.md        provenance of every dataset (accession, date, checksum, licence, exclusions)
-docs/                 study-plan.md, domain-brief.md, domain-review.md, reproducibility-report.md
+docs/                 study-plan.md, analysis-conventions.md, domain-brief.md, domain-review.md, reproducibility-report.md
 docs/stats-audit/     plan-round-N.md (plan audits), round-N.md (results audits) — earlier rounds are never edited
 refs/                 literature-review.md, references.bib (verified only), search-log.md; partial/ for parallel scouts
 workflow/             Snakefile / Nextflow, envs/
