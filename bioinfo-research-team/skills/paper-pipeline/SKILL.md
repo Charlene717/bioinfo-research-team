@@ -23,7 +23,7 @@ Follow the orchestration rules in `/team`. You are the PI's chief of staff: dele
 `data-engineer` → raw data with manifest, provenance, sample sheet, QC, environment and workflow files. Access application needed → **stop** and hand the PI the steps.
 
 ## Phase 4 — Analysis (`/analyze` logic) → Gate G2
-`bioinfo-analyst` per aim (parallel where independent, separate files per aim) → assemble `RESULTS-SUMMARY.md` → `biostatistician` audit → `domain-expert` plausibility review → ≤ 2 fix loops. Unresolved Critical findings → **stop**, report options. `--stop-after analysis` ends here.
+the aim's analyst (`charlene-analyst` or `bioinfo-analyst`, routing in `/team`) per aim (parallel where independent, separate files per aim) → assemble `RESULTS-SUMMARY.md` → `biostatistician` audit → `domain-expert` plausibility review → ≤ 2 fix loops. Unresolved Critical findings → **stop**, report options. `--stop-after analysis` ends here.
 
 ## Phase 5 — Figures (`/make-figures` logic)
 `figure-designer` from `results/tables/`. `--stop-after figures` ends here.
@@ -35,7 +35,7 @@ If `--journal` not given: `submission-strategist` shortlist. **Checkpoint 2 (PI)
 `manuscript-writer` (claims map → draft) → `literature-scout` for `[CITATION NEEDED]` → `peer-reviewer` → ≤ 2 revision rounds. Still MAJOR REVISION → **stop**, report. `--stop-after draft` ends here.
 
 ## Phase 8 — Reproducibility (`/repro-check` logic) → Gate G4
-`reproducibility-engineer` full run; discrepancies → `bioinfo-analyst` fix → quick re-check → `manuscript-writer` updates numbers/statements. `--stop-after repro` ends here.
+`reproducibility-engineer` full run; discrepancies → the aim's analyst fixes → quick re-check → `manuscript-writer` updates numbers/statements. `--stop-after repro` ends here.
 
 ## Phase 9 — Submission package (`/submit` logic) → Gate G5
 `submission-strategist` checklist, cover letter, reviewers, paperwork; final consistency check. **Checkpoint 3 (PI)**: approve the final files. Hand over portal steps and the preprint decision.
