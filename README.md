@@ -1,6 +1,5 @@
 # bioinfo-research-team
 
-
 **English** | [繁體中文](README.zh-TW.md)
 
 A Claude Code plugin that turns Claude into a bioinformatics research and publication team. Twelve specialist agents work from a research question to a submittable paper through twelve slash-command workflows, under five quality gates that a script recomputes from the report files. A guard keeps raw data immutable.
